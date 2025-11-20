@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A. Talatizi | Peinture décorative</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES COULEURS --- */
+        :root {
+            --gold: #c5a059;
+            --gold-dark: #9e7d3e;
+            --dark: #1a1a1a;
+            --cream: #f9f8f4;
+            --grey: #777777;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            background-color: var(--cream);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--dark);
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            width: 85%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .menu a {
+            color: var(--gold);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+        .menu a:hover { 
+            color: var(--cream);
+            opacity: 1;
+        }
+
+        .hero-card {
+            background-color: rgba(255, 255, 255, 0.90);
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* --- HERO --- */
+        #accueil {
+            text-align: center;
+            padding: 100px 20px;
+            background-image: url('img/white-gold-upscale-light.jpeg');
+            background-size: cover;
+            background-position: top;
+            background-attachment: fixed;
+            color: var(--dark);
+        }
+        .subtitle {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        #accueil h1 {
+            font-size: 3.5rem;
+            margin: 0 0 30px 0;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        #accueil p {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        .btn-luxe {
+            display: inline-block;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            padding: 15px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: all 0.4s;
+        }
+        .btn-luxe:hover {
+            background-color: var(--dark);
+            color: var(--gold);
+            border-color: var(--dark);
+        }
+
+        section { padding: 80px 20px; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .separator {
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: auto;
+        }
+
+        .matieres-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .matiere-card {
+            flex: 1 1 300px;
+            text-align: center;
+            padding: 20px;
+        }
+        .matiere-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .matiere-card p { color: var(--grey); font-size: 0.95rem; }
+        .icon-art { color: var(--gold); font-size: 1.5rem; margin-bottom: 20px; display: block;}
+
+        /* --- GALERIE --- */
+        #galerie { background-color: white; }
+        .gallery-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            color: var(--grey);
+        }
+        
+        .art-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+        
+        /* ICI : MODIFICATION POUR LES LIENS */
+        .art-item {
+            display: block; /* Important pour que le lien prenne toute la place */
+            text-decoration: none; /* Enlève le soulignement bleu des liens */
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair; /* On garde votre curseur artistique */
+            min-height: 300px;
+        }
+        
+        .art-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+            filter: brightness(0.95);
+        }
+        
+        .art-info {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            border-top: 2px solid var(--gold);
+        }
+        .art-info h4 { margin: 0; font-family: 'Playfair Display', serif; color: var(--dark); }
+        .art-info span { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        .art-item:hover img { transform: scale(1.1); filter: brightness(1); }
+        .art-item:hover .art-info { transform: translateY(0); }
+
+        /* --- OVERLAY BLANC --- */
+        .overlay-full {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .overlay-full h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin: 0;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+        .overlay-full span {
+            margin-top: 15px;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* --- BANNIÈRE BASSE --- */
+        .gallery-banner {
+            max-width: 1400px; 
+            margin: 20px auto 0 auto;
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .gallery-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%; 
+            transition: transform 0.8s ease;
+            filter: brightness(1.00);
+        }
+        
+        .gallery-banner:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+        
+        .gallery-banner:hover .overlay-full {
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .contact-block p { color: #aaa; margin: 5px 0; }
+        .contact-block a { color: var(--gold); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            #accueil h1 { font-size: 2.5rem; }
+            .nav-container { flex-direction: column; }
+            .menu { margin-top: 20px; }
+            html { scroll-padding-top: 140px; }
+            #accueil { background-attachment: scroll; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">A. Talatizi</div>
+            <div class="menu">
+                <a href="#accueil">L'Atelier</a>
+                <a href="#savoir-faire">Matières</a>
+                <a href="#galerie">Œuvres</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="accueil">
+        <div class="hero-card">
+            <span class="subtitle">Peinture décorative</span>
+            <h1>L'Art et la Matière</h1>
+            <p style="margin-top: 0;">
+                Composer avec le lieu, lui inventer une nouvelle nature, ou restituer son éclat premier.
+            </p>
+            <a href="#contact" class="btn-luxe" style="margin-top: 30px;">Étudier votre projet</a>
+        </div>
+    </section>
+
+    <section id="savoir-faire">
+        <div class="section-title">
+            <h2>Excellence & Tradition</h2>
+            <div class="separator"></div>
+        </div>
+
+        <div class="matieres-grid">
+            <div class="matiere-card">
+                <span class="icon-art"><i class="fas fa-gem"></i></span>
+                <h3>Marbres</h3>
+                <p>Brèche violette, Marbre de Carrare, Sarrancolin. Reproduction fidèle des veinages et des transparences de la pierre.</p>
+            </div>
+            <div class="matiere-card">
+                <span class="icon-art"><i class="fas fa-tree"></i></span>
+                <h3>Bois</h3>
+                <p>Noyer, Chêne, Ébène de Macassar. Imitation des essences précieuses pour vos boiseries et portes.</p>
+            </div>
+            <div class="matiere-card">
+                <span class="icon-art"><i class="fas fa-brush"></i></span>
+                <h3>Patines & Dorure</h3>
+                <p>Vieillissement contrôlé, dorure à la feuille et effets de matière pour donner une âme aux objets neufs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie">
+        <div class="section-title">
+            <h2>Galerie des Matières</h2>
+            <div class="separator"></div>
+            <p class="gallery-intro">Une sélection de réalisations mettant en lumière vos surfaces.</p>
+        </div>
+
+        <div class="art-gallery">
+            <a href="gallery.html#marbres" class="art-item">
+                <img src="img/orange-marble.jpeg" alt="Les marbres">
+                <div class="art-info">
+                    <span>Technique à l'huile</span>
+                    <h4>Marbre "Grand Antique"</h4>
+                </div>
+            </a>
+            
+            <a href="gallery.html#bois" class="art-item">
+                <img src="img/wood.jpeg" alt="Les bois">
+                <div class="art-info">
+                    <span>Acrylique & Glacis</span>
+                    <h4>Imitation Ronce de Noyer</h4>
+                </div>
+            </a>
+
+            <a href="gallery.html#bétons" class="art-item">
+                <img src="img/concrete-reddish.jpeg" alt="Les pierres">
+                <div class="art-info">
+                    <span>Avant / Après</span>
+                    <h4>Description</h4>
+                </div>
+            </a>
+        </div>
+
+        <a href="gallery.html" class="gallery-banner">
+            <img src="img/colors.jpeg" alt="Voir toute la galerie">
+            <div class="overlay-full">
+                <h4>Accéder à la galerie détaillée</h4>
+                <span>Marbres, Bois & Créations</span>
+            </div>
+        </a>
+
+    </section>
+
+    <footer id="contact">
+        <div class="logo" style="color: white; margin-bottom: 30px;">A. Talatizi</div>
+        <p style="font-style: italic; margin-bottom: 40px;">"Un service d'excellence pour une clientèle d'excellence."</p>
+        
+        <div class="contact-block">
+            <p>ADRESSE DE L'ATELIER</p>
+            <p>50 Rue de l'Ourcq, 75019 Paris</p>
+            <br>
+            <p>TÉLÉPHONE</p>
+            <p><a href="tel:+33631426600">06 31 42 66 00</a></p>
+            <br>
+            <p>COURRIEL</p>
+            <p><a href="mailto:contact@atelier-dupont.fr">contact@atelier-dupont.fr</a></p>
+        </div>
+
+        <div style="margin-top: 60px; font-size: 0.7rem; opacity: 0.5;">
+            &copy; 2025 A. Talatizi - Peinture Décorative. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>

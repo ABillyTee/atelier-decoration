@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Complet | A. Talatizi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- ON REPREND LES VARIABLES ET LE STYLE DE BASE --- */
+        :root {
+            --gold: #c5a059;
+            --gold-dark: #9e7d3e;
+            --dark: #1a1a1a;
+            --cream: #f9f8f4;
+            --grey: #777777;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            background-color: var(--cream);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: 1px; }
+
+        /* --- NAV (IDENTIQUE) --- */
+        nav {
+            background: var(--dark);
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            width: 85%; max-width: 1100px; margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--gold); text-transform: uppercase; letter-spacing: 2px;
+        }
+        .menu a {
+            color: var(--gold); text-decoration: none; margin-left: 25px;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: color 0.3s; opacity: 0.8;
+        }
+        .menu a:hover { color: var(--cream); opacity: 1; }
+
+        /* --- STYLE DES SECTIONS DE GALERIE --- */
+        section { padding: 60px 20px; }
+        
+        .category-title {
+            text-align: left;
+            max-width: 1400px;
+            margin: 0 auto 30px auto;
+            padding-left: 20px;
+            border-left: 3px solid var(--gold);
+        }
+        .category-title h2 { font-size: 2rem; margin: 0; color: var(--dark); }
+        .category-title p { margin: 5px 0 0 0; color: var(--grey); font-style: italic; }
+
+        /* --- GRILLE PHOTO (REPRISE DE L'ACCUEIL) --- */
+        .art-gallery {
+            display: grid;
+            
+            /* --- MODIFICATION ICI --- */
+            /* On passe de 300px à 500px (ou 450px) */
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            /* ------------------------ */
+            
+            gap: 20px; /* Espace entre les photos */
+            max-width: 1400px;
+            margin: auto;
+        }
+        .art-item {
+            position: relative; overflow: hidden; cursor: crosshair; min-height: 300px;
+        }
+        .art-item img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.8s ease; filter: brightness(0.95);
+        }
+        .art-info {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: white; padding: 20px;
+            transform: translateY(100%); transition: transform 0.4s ease;
+            border-top: 2px solid var(--gold);
+        }
+        .art-info h4 { margin: 0; font-family: 'Playfair Display', serif; color: var(--dark); }
+        .art-info span { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        .art-item:hover img { transform: scale(1.1); filter: brightness(1); }
+        .art-item:hover .art-info { transform: translateY(0); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark); color: white;
+            padding: 40px 20px; text-align: center; margin-top: 50px;
+        }
+        
+        /* Header simple pour la page galerie */
+        .page-header {
+            background-color: white; padding: 80px 20px; text-align: center;
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .page-header p { color: var(--grey); max-width: 600px; margin: auto; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration:none;"><div class="logo">A. Talatizi</div></a>
+            <div class="menu">
+                <a href="index.html#accueil">L'Atelier</a>
+                <a href="index.html#savoir-faire">Matières</a>
+                <a href="#" style="color: var(--cream); opacity: 1;">Œuvres</a> <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Portfolio Complet</h1>
+        <p>Explorez l'ensemble des réalisations de l'atelier, classées par matières et techniques.</p>
+    </div>
+
+    <section id="marbres">
+        <div class="category-title">
+            <h2>Les Marbres</h2>
+            <p>Petite description.</p>
+        </div>
+        
+        <div class="art-gallery">
+            <div class="art-item">
+                <img src="img/orange-marble.jpeg" alt="Marbre 1">
+                <div class="art-info">
+                    <span>Marbre orange</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/black-yellow-marble.jpeg" alt="Marbre 2">
+                <div class="art-info">
+                    <span>Marbre noir à veinures jaunes</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/black-white-marble.jpeg" alt="Marbre 3">
+                <div class="art-info">
+                    <span>Marbre noir à veinures blanches</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/red-marble.jpeg" alt="Marbre 4">
+                <div class="art-info">
+                    <span>Marbre rouge à veinures noires</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/verde-alpi-marble.jpeg" alt="Marbre 5">
+                <div class="art-info">
+                    <span>Marbre Verde Alpi à veinures blanches</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/red-blue-marble.jpeg" alt="Marbre 6">
+                <div class="art-info">
+                    <span>Marbre rouge à veinures blanches</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bois" style="background-color: white;"> <div class="category-title">
+            <h2>Les Bois</h2>
+            <p>Essences précieuses, loupes et ronces.</p>
+        </div>
+
+        <div class="art-gallery">
+            <div class="art-item">
+                <img src="img/wood.jpeg" alt="Bois 1">
+                <div class="art-info">
+                    <span>Peinture sur XXX</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/wood-stars.jpeg" alt="Bois 2">
+                <div class="art-info">
+                    <span>Damier étoilé d'essences boisées</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/metallic-2.jpeg" alt="Bois 3">
+                <div class="art-info">
+                    <span>Bois métallisé</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bétons" style="background-color: white;"> <div class="category-title">
+            <h2>Les Pierres</h2>
+            <p>Essences rares.</p>
+        </div>
+
+        <div class="art-gallery">
+            <div class="art-item">
+                <img src="img/concrete-blueish.jpeg" alt="Beton 1">
+                <div class="art-info">
+                    <span>Béton beuté</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/concrete-reddish.jpeg" alt="Beton 2">
+                <div class="art-info">
+                    <span>Béton orangé</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/concerte-wall.jpeg" alt="Beton 3">
+                <div class="art-info">
+                    <span>Béton industriel</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/white-gold-light.jpeg" alt="Beton 4">
+                <div class="art-info">
+                    <span>Échancrures dorées</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demonstrations" style="background-color: white;"> <div class="category-title">
+            <h2>Échantillons</h2>
+            <p>Essences diverses, combinaisons.</p>
+        </div>
+
+        <div class="art-gallery">
+            <div class="art-item">
+                <img src="img/ceramics-1.jpeg" alt="Sample 1">
+                <div class="art-info">
+                    <span>Échantillons de carrelage en marbre I</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/ceramics-2.jpeg" alt="Sample 2">
+                <div class="art-info">
+                    <span>Échantillons de carrelage en marbre II</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/demo-black-white-marble-2.jpeg" alt="Sample 3">
+                <div class="art-info">
+                    <span>Échantillons de marbre zébré</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/demo-metal-woods.jpeg" alt="Sample 4">
+                <div class="art-info">
+                    <span>Échantillons divers</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/marble-wood.jpeg" alt="Sample 5">
+                <div class="art-info">
+                    <span>Combinaison sublime bois & marbre</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/demo-three-marbles.jpeg" alt="Sample 5">
+                <div class="art-info">
+                    <span>Échantillons de marbres</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/concrete.jpeg" alt="Sample 6">
+                <div class="art-info">
+                    <span>Échantillons bois/béton</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/demo-marble.jpeg" alt="Sample 6">
+                <div class="art-info">
+                    <span>Échantillons de marbre blanc</span>
+                    <h4>Détails</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="autres">
+        <div class="category-title">
+            <h2>Autres Créations</h2>
+            <p>Patines, ciels peints, dorures et ornements.</p>
+        </div>
+
+        <div class="art-gallery">
+            <div class="art-item">
+                <img src="img/wall-white.jpeg" alt="Misc-1">
+                <div class="art-info">
+                    <span>Refonte de peinture de mur</span>
+                    <h4>Avant</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/wall-green.jpeg" alt="Misc-2">
+                <div class="art-info">
+                    <span>Refonte de peinture de mur</span>
+                    <h4>Après</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/column-marble-8.jpeg" alt="Misc-3">
+                <div class="art-info">
+                    <span>Colonne de marbre blanc</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/black-marble-bathroom-smiley.png" alt="Misc-4">
+                <div class="art-info">
+                    <span>Marbre noir sur portes</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/marble-plinthe.jpeg" alt="Misc-5">
+                <div class="art-info">
+                    <span>Plinthe de marbre gris</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/heater-marble-1.jpeg" alt="Misc-6">
+                <div class="art-info">
+                    <span>Marbre gris sur radiateur</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+            <div class="art-item">
+                <img src="img/wood-wall.jpeg" alt="Misc-7">
+                <div class="art-info">
+                    <span>Bois sur mur</span>
+                    <h4>Nom de la surface</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding-bottom: 60px;">
+        <a href="index.html" class="btn-luxe" style="display: inline-block; border-color: var(--dark);">Retour à l'accueil</a>
+    </div>
+
+    <footer id="contact">
+        <div class="logo" style="color: white; margin-bottom: 30px;">A. Talatizi</div>
+        
+        <div class="contact-block">
+            <p>50 Rue de l'Ourcq, 75019 Paris</p>
+            <p><a href="tel:+33631426600" style="color:var(--gold); text-decoration:none;">06 31 42 66 00</a></p>
+            <p><a href="mailto:contact@atelier-dupont.fr" style="color:var(--gold); text-decoration:none;">contact@atelier-dupont.fr</a></p>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 0.7rem; opacity: 0.5;">
+            &copy; 2025 A. Talatizi. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>
