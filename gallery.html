@@ -67,15 +67,11 @@
         .category-title h2 { font-size: 2rem; margin: 0; color: var(--dark); }
         .category-title p { margin: 5px 0 0 0; color: var(--grey); font-style: italic; }
 
-        /* --- GRILLE PHOTO (REPRISE DE L'ACCUEIL) --- */
+        /* --- GRILLE PHOTO --- */
         .art-gallery {
             display: grid;
-            
-            /* --- MODIFICATION ICI --- */
-            /* On passe de 300px à 500px (ou 450px) */
+            /* Sur PC : 2 colonnes minimum (500px chacune) */
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            /* ------------------------ */
-            
             gap: 20px; /* Espace entre les photos */
             max-width: 1400px;
             margin: auto;
@@ -111,6 +107,57 @@
         }
         .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
         .page-header p { color: var(--grey); max-width: 600px; margin: auto; }
+
+        /* --- BOUTON LUXE (Ajouté pour le bouton retour) --- */
+        .btn-luxe {
+            display: inline-block;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            padding: 15px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: all 0.4s;
+        }
+        .btn-luxe:hover {
+            background-color: var(--dark);
+            color: var(--gold);
+            border-color: var(--dark);
+        }
+
+        /* ========================================= */
+        /* === CORRECTIF MOBILE (AJOUTÉ ICI) === */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            
+            /* 1. Empêche le débordement horizontal */
+            html, body { overflow-x: hidden; width: 100%; }
+
+            /* 2. Menu Mobile */
+            .nav-container { flex-direction: column; width: 100%; }
+            .menu { 
+                margin-top: 15px; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 10px; 
+            }
+            .menu a { margin: 0; font-size: 0.9rem; padding: 5px 0; }
+
+            /* 3. Ajustement des titres */
+            .page-header h1 { font-size: 2rem; }
+            .category-title h2 { font-size: 1.5rem; }
+
+            /* 4. CRUCIAL : On débloque la taille des images sur mobile */
+            /* On remplace le "500px minimum" par "1 colonne flexible" */
+            .art-gallery {
+                grid-template-columns: 1fr; 
+            }
+            
+            /* 5. Ajustement du scroll pour le menu */
+            html { scroll-padding-top: 160px; }
+        }
 
     </style>
 </head>
@@ -184,7 +231,8 @@
         </div>
     </section>
 
-    <section id="bois" style="background-color: white;"> <div class="category-title">
+    <section id="bois" style="background-color: white;"> 
+        <div class="category-title">
             <h2>Les Bois</h2>
             <p>Essences précieuses, loupes et ronces.</p>
         </div>
@@ -214,7 +262,8 @@
         </div>
     </section>
 
-    <section id="bétons" style="background-color: white;"> <div class="category-title">
+    <section id="autres" style="background-color: white;"> 
+        <div class="category-title">
             <h2>Les Pierres</h2>
             <p>Essences rares.</p>
         </div>
@@ -223,7 +272,7 @@
             <div class="art-item">
                 <img src="img/concrete-blueish.jpeg" alt="Beton 1">
                 <div class="art-info">
-                    <span>Béton beuté</span>
+                    <span>Béton bleuté</span>
                     <h4>Détails</h4>
                 </div>
             </div>
@@ -251,7 +300,8 @@
         </div>
     </section>
 
-    <section id="demonstrations" style="background-color: white;"> <div class="category-title">
+    <section id="demonstrations" style="background-color: white;"> 
+        <div class="category-title">
             <h2>Échantillons</h2>
             <p>Essences diverses, combinaisons.</p>
         </div>
@@ -316,7 +366,7 @@
         </div>
     </section>
 
-    <section id="autres">
+    <section id="creations">
         <div class="category-title">
             <h2>Autres Créations</h2>
             <p>Patines, ciels peints, dorures et ornements.</p>

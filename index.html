@@ -292,12 +292,43 @@
         .contact-block p { color: #aaa; margin: 5px 0; }
         .contact-block a { color: var(--gold); text-decoration: none; }
 
+        /* ========================================= */
+        /* === CORRECTIF MOBILE (ROBUSTE) === */
+        /* ========================================= */
         @media (max-width: 768px) {
-            #accueil h1 { font-size: 2.5rem; }
-            .nav-container { flex-direction: column; }
-            .menu { margin-top: 20px; }
-            html { scroll-padding-top: 140px; }
-            #accueil { background-attachment: scroll; }
+            
+            /* 1. Empêche le débordement horizontal */
+            html, body { overflow-x: hidden; width: 100%; }
+
+            /* 2. Menu Mobile */
+            .nav-container { flex-direction: column; width: 100%; }
+            .menu { 
+                margin-top: 15px; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 10px; 
+            }
+            .menu a { margin: 0; font-size: 0.9rem; padding: 5px 0; }
+
+            /* 3. Ajustement des titres et carte */
+            #accueil h1 { font-size: 2.2rem; }
+            .hero-card { padding: 30px 20px; }
+            
+            /* 4. FIX BACKGROUND MOBILE */
+            #accueil { 
+                background-attachment: scroll; 
+                background-position: center center;
+            }
+
+            /* 5. FIX BANNIERE BASSE (Réduction hauteur) */
+            /* 300px suffit sur mobile, sinon c'est trop zoomé */
+            .gallery-banner {
+                height: 300px; 
+            }
+
+            /* 6. Ajustement du scroll */
+            html { scroll-padding-top: 160px; }
         }
     </style>
 </head>
