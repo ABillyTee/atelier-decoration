@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | A. Talatizi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="navigation-bar.css">
+    <link rel="stylesheet" href="btn-luxe.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <style>
+        /* --- RÈGLES SPÉCIFIQUES À LA PAGE CONTACT --- */
+        
+        /* 1. On force le fond global en Noir Charbon */
+        body {
+            background-color: var(--dark);
+            color: var(--gold); /* Texte par défaut en or */
+        }
+
+        /* 2. Ajustement du Menu pour qu'il se fonde dans le noir */
+        nav {
+            border-bottom: 1px solid #333; /* Bordure très discrète */
+        }
+
+        /* 3. Section principale qui centre la carte */
+        #contact {
+            min-height: 80vh; /* Prend presque toute la hauteur de l'écran */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at center, #252525 0%, #1a1a1a 70%); /* Léger dégradé pour la profondeur */
+        }
+
+        /* 4. La "Carte de Visite" virtuelle */
+        .business-card {
+            border: 1px solid var(--gold);
+            padding: 80px 60px;
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.5); /* Fond noir semi-transparent */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Ombre profonde */
+            position: relative;
+        }
+
+        /* Petits coins dorés décoratifs (Optionnel, très chic) */
+        .business-card::before, .business-card::after {
+            content: '';
+            position: absolute;
+            width: 15px; height: 15px;
+            border-color: var(--gold);
+            border-style: solid;
+            transition: all 0.5s ease;
+        }
+        .business-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; } /* Coin haut gauche */
+        .business-card::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; } /* Coin bas droit */
+
+        /* Typographie de la carte */
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        .card-subtitle {
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            color: #666; /* Gris sombre pour le sous-titre */
+            margin-bottom: 60px;
+            display: block;
+        }
+
+        .contact-details {
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            margin: 25px 0;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-item i {
+            font-size: 1rem;
+            margin-right: 15px;
+            color: #444; /* Icône discrète */
+        }
+
+        /* Les liens (Tel, Email) */
+        .contact-link {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
+            position: relative;
+        }
+
+        /* Effet au survol : devient blanc et s'écarte un peu */
+        .contact-link:hover {
+            color: var(--cream);
+            letter-spacing: 1px;
+        }
+        
+        /* Le petit trait sous le lien au survol */
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 1px;
+            bottom: -5px; left: 50%;
+            background-color: var(--cream);
+            transition: all 0.3s ease;
+        }
+        .contact-link:hover::after {
+            width: 100%; left: 0;
+        }
+
+        .note-rdv {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            display: inline-block;
+        }
+
+        /* Réseaux sociaux */
+        .socials {
+            margin-top: 40px;
+        }
+        .social-icon {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--cream);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .business-card { padding: 40px 20px; border: none; } /* On enlève le cadre sur mobile pour gagner de la place */
+            .card-title { font-size: 2rem; }
+            .contact-item { font-size: 1rem; }
+            /* On garde les coins décoratifs même sans bordure, c'est joli */
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">A. Talatizi</div>
+            <div class="menu">
+                <a href="index.html#atelier-header">L'Atelier</a>
+                <a href="gallery.html#oeuvres">Œuvres</a>
+                <a href="contact.html#contact" style="color: var(--cream); opacity: 1;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="contact">
+        <div class="business-card">
+            
+            <h1 class="card-title">A. Talatizi</h1>
+            <span class="card-subtitle">Peintre en Décors & Matières</span>
+
+            <div class="contact-details">
+                <div class="contact-item">
+                    <a href="tel:+33631426600" class="contact-link">06 31 42 66 00</a>
+                </div>
+
+                <div class="contact-item">
+                    <a href="mailto:alextizi4@hotmail.fr" class="contact-link">contact@atelier-talatizi.fr</a>
+                </div>
+
+                <div class="contact-item" style="color: var(--gold);">
+                    50 Rue de l'Ourcq, 75019 Paris
+                </div>
+            </div>
+
+            <span class="note-rdv">
+                L'atelier reçoit uniquement sur rendez-vous.<br>
+                Déplacements à Paris, en France et à l'International.
+            </span>
+
+            <div class="socials">
+                <!-- <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a> -->
+                <a href="https://www.linkedin.com/in/alexandre-talatizi-05715222a/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:alextizi4@hotmail.fr" target="_blank" rel="noopener noreferrer" class="social-icon" title="Envoyer un mail"><i class="far fa-envelope"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer style="background-color: var(--dark); border-top: 1px solid #222; padding: 30px; margin-top:0;">
+        <div style="font-size: 0.7rem; opacity: 0.3; color: white;">
+            &copy; 2025 A. Talatizi. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>

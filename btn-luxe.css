@@ -1,0 +1,36 @@
+.btn-luxe {
+    display: inline-block;
+    border: 1px solid var(--dark);
+    color: var(--dark);
+    padding: 15px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.4s;
+}
+.btn-luxe:hover {
+    background-color: var(--dark);
+    color: var(--gold);
+    border-color: var(--dark);
+}
+
+.btn-luxe-light {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--cream); /* Texte clair au repos */
+    padding: 15px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.4s;
+    /* Si vous voulez être sûr que le fond est noir au départ (et pas juste transparent) : */
+    /* background-color: var(--dark); */ 
+}
+
+.btn-luxe-light:hover {
+    background-color: var(--cream); /* Le fond devient Blanc/Crème */
+    color: var(--dark);             /* ICI : L'écriture devient Noire */
+    border-color: var(--gold);      /* Le cadre reste doré */
+}

@@ -1,0 +1,16 @@
+/* --- FOOTER --- */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+.footer-block p {
+    color: #aaa;
+    margin: 5px 0;
+}
+.footer-block a {
+    color: var(--gold);
+    text-decoration: none;
+}
