@@ -150,11 +150,48 @@
         }
 
         /* Mobile */
+        /* --- MOBILE (Mise à jour complète) --- */
         @media (max-width: 768px) {
-            .business-card { padding: 40px 20px; border: none; } /* On enlève le cadre sur mobile pour gagner de la place */
-            .card-title { font-size: 2rem; }
-            .contact-item { font-size: 1rem; }
-            /* On garde les coins décoratifs même sans bordure, c'est joli */
+            
+            /* 1. SÉCURITÉ GÉNÉRALE */
+            html, body { overflow-x: hidden; width: 100%; }
+
+            /* 2. LE MENU (C'était la partie manquante !) */
+            /* On force la colonne verticale comme sur les autres pages */
+            .nav-container { 
+                flex-direction: column; 
+                width: 100%; 
+            }
+            .menu { 
+                margin-top: 15px; 
+                display: flex; 
+                flex-direction: column; /* Les liens s'empilent */
+                align-items: center; 
+                gap: 10px; 
+            }
+            .menu a { 
+                margin: 0; 
+                font-size: 0.9rem; 
+                padding: 5px 0; 
+            }
+
+            /* 3. LA CARTE DE VISITE (Vos règles existantes) */
+            .business-card { 
+                padding: 40px 20px; 
+                border: none; /* On enlève le cadre pour gagner de la place */
+            } 
+            .card-title { 
+                font-size: 2rem; 
+            }
+            .contact-item { 
+                font-size: 1rem; 
+            }
+            
+            /* On réduit un peu le padding du conteneur principal */
+            #contact {
+                padding: 20px;
+                min-height: 70vh; /* Ajustement hauteur */
+            }
         }
 
     </style>
