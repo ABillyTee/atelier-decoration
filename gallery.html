@@ -36,6 +36,28 @@
             font-size: 2.2rem; margin: 0; color: var(--dark); 
             text-transform: uppercase; letter-spacing: 2px;
         }
+
+        @media (max-width: 900px) {
+    
+            /* ... vos autres règles mobiles ... */
+
+            /* CORRECTION DU TITRE */
+            .page-header {
+                padding: 60px 15px 40px 15px; /* On réduit le padding */
+            }
+
+            .page-header h1 {
+                font-size: 2rem; /* On réduit la taille (3.5rem -> 2rem) */
+                line-height: 1.2; /* Meilleur interlignage */
+                margin-bottom: 15px;
+                word-wrap: break-word; /* Empêche le débordement */
+            }
+            
+            .page-header p {
+                font-size: 1rem; /* On réduit aussi le sous-titre */
+                padding: 0 10px; /* Marges de sécurité */
+            }
+        }
     </style>
 </head>
 <body>

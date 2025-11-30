@@ -184,13 +184,37 @@
 .lb-next { right: 30px; }
 
 .lb-close { 
-    position: absolute; top: 30px; right: 40px; 
-    font-size: 3rem; color: var(--dark); cursor: pointer; 
-    opacity: 0.3; transition: opacity 0.3s;
-    z-index: 10001;
+    position: absolute;
+    top: 25px; 
+    right: 25px;
+    
+    /* Forme ronde */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+    /* Couleurs et Bordure */
+    background-color: white;
+    border: 1px solid var(--gold);
+    color: var(--dark);
+    
+    /* Centrage du X */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem; /* Taille du X */
+    line-height: 1; /* Important pour le centrage vertical */
+    
+    cursor: pointer;
+    z-index: 10002; /* Au-dessus de tout */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombre pour détacher du fond */
+    transition: all 0.3s ease;
 }
-.lb-close:hover { opacity: 1; }
-
+.lb-close:hover {
+    background-color: var(--gold);
+    color: white;
+    transform: rotate(90deg); /* Petit effet de rotation sympa */
+}
 /* --- MOBILE --- */
 @media (max-width: 900px) {
     .art-gallery, .selection-gallery { 
@@ -209,4 +233,14 @@
     .lb-btn { width: 40px; height: 60px; font-size: 1.2rem; }
     .lb-prev { left: 10px; }
     .lb-next { right: 10px; }
+    .lb-close {
+        width: 35px; /* Un peu plus petit sur mobile */
+        height: 35px;
+        font-size: 1.5rem;
+        top: 15px;
+        right: 15px;
+        color: var(--dark); /* On force le noir sur mobile aussi */
+        background-color: white; /* On force le fond blanc */
+        opacity: 1; /* Toujours visible */
+    }
 }
