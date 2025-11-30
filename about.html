@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Artisan | A. Talatizi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="navigation-bar.css">
+    <link rel="stylesheet" href="btn-luxe.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <style>
+        /* --- STYLE SPÉCIFIQUE "HUMAIN & CHALEUREUX" --- */
+        
+        body { background-color: var(--cream); }
+
+        /* 1. SECTION BIO (RENCONTRE) */
+        .bio-section {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            gap: 60px;
+        }
+
+        .bio-image-container {
+            flex: 1;
+            position: relative;
+        }
+
+        /* La photo de l'artisan (De face ou 3/4, chaleureuse) */
+        .bio-img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0px rgba(197, 160, 89, 0.2); /* Ombre dorée graphique */
+            object-fit: cover;
+            height: 600px; /* Grande photo verticale */
+        }
+
+        .bio-content {
+            flex: 1;
+        }
+
+        .greeting {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .bio-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .bio-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* La signature manuscrite en bas du texte */
+        .signature-img {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-top: 20px;
+        }
+
+        /* 2. SECTION PARCOURS (FORMATION & CHANTIERS) */
+        .timeline-container {
+            background-color: white;
+            padding: 80px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Deux colonnes : Formation / Expérience */
+            gap: 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .timeline-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-col h3 i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* L'item de parcours */
+        .history-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--gold-dark); /* Ligne de temps */
+        }
+
+        .history-date {
+            font-weight: bold;
+            color: var(--gold-dark);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .history-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin: 0 0 5px 0;
+        }
+
+        .history-desc {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .bio-section { flex-direction: column; padding: 40px 20px; gap: 40px; }
+            .bio-img { height: 400px; }
+            .timeline-grid { grid-template-columns: 1fr; gap: 40px; }
+            .bio-title { font-size: 2.2rem; }
+        }
+        
+        /* --- NOUVEAU : SECTION "MATIÈRES DE PRÉDILECTION" --- */
+        .favorites-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fav-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .fav-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .fav-header p {
+            font-family: 'Mrs Saint Delafield', cursive; /* Rappel signature */
+            font-size: 3rem;
+            color: var(--gold-dark);
+            margin: 0;
+        }
+
+        /* La Grille 2 colonnes */
+        .fav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .fav-card {
+            background-color: white;
+            padding: 40px;
+            border: 1px solid rgba(197, 160, 89, 0.2); /* Bordure dorée très pâle */
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Petit effet "carte levée" au survol */
+        .fav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border-color: var(--gold);
+        }
+
+        /* Image ronde ou carrée adoucie */
+        .fav-img-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+            border: 4px solid var(--cream);
+            box-shadow: 0 0 0 1px var(--gold); /* Double bordure fine */
+        }
+
+        .fav-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .fav-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .fav-grid { grid-template-columns: 1fr; gap: 40px; }
+            .fav-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo-text">A. TALATIZI</div>
+            <div class="menu">
+                <a href="index.html">LA MAISON</a>
+                <a href="about.html" class="active">L'ARTISAN</a>
+                <a href="gallery.html">COLLECTIONS</a>
+                <a href="contact.html">RENDEZ-VOUS</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bio-section">
+        
+        <div class="bio-image-container">
+            <img src="img/portrait-face.jpg" alt="Portrait de A. Talatizi" class="bio-img">
+        </div>
+
+        <div class="bio-content">
+            <span class="greeting">Bonjour,</span>
+            <h1 class="bio-title">Je suis A. Talatizi,<br>votre artisan décorateur.</h1>
+            
+            <p class="bio-text">
+                Derrière chaque projet de cet atelier, il y a une passion personnelle pour la matière et une volonté de pérenniser des gestes oubliés.
+                <br><br>
+                Loin des productions industrielles, j'ai choisi l'artisanat d'art pour la relation privilégiée qu'il permet de tisser avec vous. Lorsque vous me confiez vos murs, ce n'est pas seulement une technique que vous engagez, c'est un regard et une sensibilité.
+                <br><br>
+                Ma garantie ? Une transparence totale, une main unique qui réalise l'intégralité des décors, et une formation académique rigoureuse qui assure la durabilité de mes ouvrages.
+            </p>
+
+            <div class="signature-img">A. Talatizi</div>
+        </div>
+
+    </section>
+    
+    <section class="favorites-section">
+        
+        <div class="fav-header">
+            <h2>Mes Matières de Prédilection</h2>
+            <p>Mon geste y trouve son plus bel écho</p>
+        </div>
+
+        <div class="fav-grid">
+            
+            <div class="fav-card">
+                <img src="img/wood.jpeg" alt="Détail Faux Bois" class="fav-img-circle">
+                <h3>Le Bois</h3>
+                <p>
+                    "J'ai une affection particulière pour le travail des essences de bois. 
+                    Il y a quelque chose de méditatif à reproduire les cernes du temps, la chaleur de la ronce de noyer 
+                    ou la rigueur du chêne maillé. C'est une matière vivante que j'aime réinventer pour donner 
+                    de la noblesse à une simple porte ou une boiserie."
+                </p>
+            </div>
+
+            <div class="fav-card">
+                <img src="img/orange-marble.jpeg" alt="Détail Faux Marbre" class="fav-img-circle">
+                <h3>Le Marbre</h3>
+                <p>
+                    "Le marbre est un défi technique fascinant. C'est l'art de capturer la géologie, 
+                    la transparence de la pierre et la violence des brèches. 
+                    J'aime particulièrement travailler les marbres italiens et les Sarrancolins, 
+                    pour apporter cette touche d'éternité et de fraîcheur aux intérieurs."
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="timeline-container">
+        <div class="timeline-grid">
+            
+            <div class="timeline-col">
+                <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
+                
+                <div class="history-item">
+                    <span class="history-date">20XX - 20XX</span> <h4 class="history-title">École Artemisia, Paris</h4>
+                    <p class="history-desc">
+                        Formation supérieure en Peinture Décorative & Trompe-l'œil.<br>
+                        Apprentissage rigoureux des imitations bois, marbres et panoramiques.
+                    </p>
+                </div>
+
+                <div class="history-item">
+                    <span class="history-date">20XX</span>
+                    <h4 class="history-title">Titre de Peintre en Décors</h4>
+                    <p class="history-desc">Certification reconnue par l'État (Niveau III).</p>
+                </div>
+            </div>
+
+            <div class="timeline-col">
+                <h3><i class="fas fa-paint-roller"></i> Chantiers Notables</h3>
+                
+                <div class="history-item">
+                    <span class="history-date">2023</span>
+                    <h4 class="history-title">Appartement Haussmannien, Paris 16e</h4>
+                    <p class="history-desc">Restauration complète de boiseries et création d'un faux marbre Sarrancolin sur cheminée.</p>
+                </div>
+
+                <div class="history-item">
+                    <span class="history-date">2021</span>
+                    <h4 class="history-title">Hôtel Particulier, Neuilly</h4>
+                    <p class="history-desc">Réalisation d'un ciel peint (plafond de 20m²) et patines à la chaux.</p>
+                </div>
+
+                <div class="history-item">
+                    <span class="history-date">2019</span>
+                    <h4 class="history-title">Brasserie Traditionnelle, Lyon</h4>
+                    <p class="history-desc">Imitation chêne maillé sur l'ensemble du comptoir et des soubassements.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer style="background-color: var(--dark); padding: 40px 20px; color:white; text-align:center;">
+        <div style="font-size: 0.8rem; opacity: 0.5;">
+            &copy; 2025 A. Talatizi. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>
