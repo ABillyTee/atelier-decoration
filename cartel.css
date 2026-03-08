@@ -6,18 +6,18 @@
 /* --- 1. LA GRILLE (CONTAINER) --- */
 .art-gallery, .selection-gallery {
     display: grid;
-    /* Grille responsive : colonnes de 300px minimum */
-    /* auto-fill pour la galerie (remplit le vide), auto-fit pour l'index (centre si peu d'items) */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     gap: 40px; /* Espace musée */
     max-width: 1400px;
     margin: auto;
 }
-
-/* Spécifique pour l'index (souvent moins d'items, on veut que ça s'étale) */
-.selection-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.art-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
 }
+.selection-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); 
+    justify-content: center;
+}
+
 
 /* --- 2. L'ÉLÉMENT (BOÎTE) --- */
 .art-item, .selection-item {
